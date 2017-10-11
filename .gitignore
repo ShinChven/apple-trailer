@@ -65,3 +65,16 @@ typings/
 
 # dotenv environment variables file
 .env
+
+CVS
+.svn
+.hg
+.wafpickle-N
+.*.swp
+.DS_Store
+._*
+npm-debug.log
+.npmrc
+config.gypi
+*.orig
+package-lock.json
