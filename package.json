@@ -2,5 +2,9 @@
   "name": "apple-trailer",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "author": "ShinChven Zhang",
+  "license": "MIT",
+  "dependencies": {
+    "superagent": "^3.6.3"
+  }
 }
