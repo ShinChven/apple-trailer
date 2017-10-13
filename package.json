@@ -5,6 +5,8 @@
   "author": "ShinChven Zhang",
   "license": "MIT",
   "dependencies": {
-    "superagent": "^3.6.3"
+    "bluebird": "^3.5.1",
+    "superagent": "^3.6.3",
+    "url-exists": "^1.0.3"
   }
 }
