@@ -22,7 +22,7 @@ function outputJsonFile(url, dataJSONString) {
 }
 
 function main() {
-    let url = "https://trailers.apple.com/trailers/lucasfilm/rogueoneastarwarsstory/";
+    let url = "http://trailers.apple.com/trailers/marvel/black-panther/";
     console.log('home: ' + url);
     console.log('');
     appleTrailerApi.getPage(url, function (err, page) {
@@ -32,9 +32,11 @@ function main() {
         }
 
         // // output JSON data for inspection.
-        // var dataJSONString = JSON.stringify(data, null, 2);
+        // var dataJSONString = JSON.stringify(page, null, 2);
         // outputJsonFile(url,dataJSONString);
-        // console.log(data);
+        // console.log(page);
+
+        console.log(page.page.movie_title);
 
         try {
             console.log('hero: ' + page.heros['1'].imageurl);
