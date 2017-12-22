@@ -21,8 +21,12 @@ function outputJsonFile(url, dataJSONString) {
     })
 }
 
+/**
+ * command line usage:
+ * node test/test-get-all-video.js http://trailers.apple.com/trailers/magnolia/please-stand-by/
+ */
 function main() {
-    let url = "http://trailers.apple.com/trailers/marvel/black-panther/";
+    let url = process.argv[2];
     console.log('home: ' + url);
     console.log('');
     appleTrailerApi.getPage(url, function (err, page) {
