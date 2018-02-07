@@ -1,6 +1,6 @@
 const fs = require('fs');
 const quality = require('../src/quality');
-const appleTrailerApi=require('../src/apple-trailer-api');
+const appleTrailerApi=require('../src/index');
 
 String.prototype.replaceAll = function (search, replacement) {
     var target = this;
