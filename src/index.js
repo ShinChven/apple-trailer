@@ -1,5 +1,6 @@
 const http = require('superagent');
 const cheerio = require('cheerio');
+
 /**
  * resolve Apple Trailer page data.
  * @param url apple trailer page url, http and https are both supported.
@@ -33,12 +34,7 @@ function getPageData(url) {
                     reject(err);
                 });
             });
-        return dataRequest.then(function (resp) {
-            let data = resp.body;
-            return new Promise(function (resolve, reject) {
-                resolve(data);
-            });
-        })
+        return dataRequest.then(readJSON)
             .catch(function (err) {
                 // console.error(err);
                 return new Promise(function (resolve, reject) {
@@ -50,12 +46,7 @@ function getPageData(url) {
         let dataURL = url + '/data/page.json';
         return http
             .get(dataURL)
-            .then(function (resp) {
-                let data = resp.body;
-                return new Promise(function (resolve) {
-                    resolve(data);
-                })
-            })
+            .then(readJSON)
             .catch(function (err) {
                 return new Promise(function (resolve, reject) {
                     reject(err);
@@ -63,6 +54,31 @@ function getPageData(url) {
             });
     }
 };
+
+function readJSON(resp) {
+    return new Promise(function (resolve, reject) {
+        let data = resp.body;
+        if (data) {
+            resolve(data);
+        } else {
+            reject(new Error('no data'))
+        }
+    })
+}
+
+function getMostPop() {
+    return http.get('https://trailers.apple.com/trailers/home/feeds/popular/most_pop.json')
+        .then(readJSON);
+}
+
+function getOpening() {
+    return http.get('https://trailers.apple.com/trailers/home/feeds/opening.json').then(readJSON);
+}
+
+function getJustAdded() {
+    return http.get('https://trailers.apple.com/trailers/home/feeds/just_added.json').then(readJSON);
+}
+
 
 const quality = {
     sd: 'sd',
@@ -121,7 +137,10 @@ function getVideoUrl(page, q) {
 }
 
 module.exports = {
-    getPageData: getPageData,
+    getPageData:getPageData,
+    getMostPop:getMostPop,
+    getOpening:getOpening,
+    getJustAdded:getJustAdded,
     getVideoUrl: getVideoUrl,
     getRealVideoURL: getRealVideoURL,
     quality: quality

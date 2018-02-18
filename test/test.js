@@ -1,5 +1,4 @@
 const appleTrailer = require('../src/index');
-var stringArgv = require('string-argv');
 
 /**
  * command line usage:
@@ -12,7 +11,7 @@ function main() {
     console.log(url);
     console.log('');
 
-    appleTrailer
+    appleTrailer.feeds
         .getPageData(url)
         .then(function (data) {
             let title = data.page.movie_title;
