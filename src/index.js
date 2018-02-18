@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
  * @param url apple trailer page url, http and https are both supported.
  * @returns {Promise<any>} a promise to return data.
  */
-let getPageData = function getPageData(url) {
+function getPageData(url) {
     // check if there is a url
     if (!url) {
         return new Promise(function (resolve, reject) {
