@@ -43,6 +43,11 @@ function getPageData(url) {
     }
 };
 
+/**
+ * Return a promise to provide data retrieved from Apple Trailer feeds.
+ * @param resp Apple Trailer feeds response, must be a json response.
+ * @returns {Promise<any>} Return a promise to provide data retrieved from Apple Trailer feeds.
+ */
 function readJSON(resp) {
     return new Promise(function (resolve, reject) {
         let data = resp.body;
@@ -54,32 +59,59 @@ function readJSON(resp) {
     })
 }
 
+/**
+ * getMostPop feeds
+ * @returns {Request|PromiseLike<T>|Promise<T>}
+ */
 function getMostPop() {
     return http.get('https://trailers.apple.com/trailers/home/feeds/popular/most_pop.json')
         .then(readJSON);
 }
 
+/**
+ * getOpening feeds
+ * @returns {Request|PromiseLike<T>|Promise<T>}
+ */
 function getOpening() {
     return http.get('https://trailers.apple.com/trailers/home/feeds/opening.json').then(readJSON);
 }
 
+/**
+ * getJustAdded feeds
+ * @returns {Request|PromiseLike<T>|Promise<T>}
+ */
 function getJustAdded() {
     return http.get('https://trailers.apple.com/trailers/home/feeds/just_added.json').then(readJSON);
 }
 
-
+/**
+ * Video qualities
+ * @type {{sd: string, hd720: string, hd1080: string}}
+ */
 const quality = {
     sd: 'sd',
     hd720: 'hd720',
     hd1080: 'hd1080'
 };
 
+/**
+ * Quality file name.
+ * @type {{h1080p_mov: string, h720p_mov: string, h480p_mov: string}}
+ */
 const qualityName = {
     h1080p_mov: 'h1080p.mov',
     h720p_mov: 'h720p.mov',
     h480p_mov: 'h480p.mov'
 };
 
+/**
+ * Video urls in Apple Trailer's json data can not be downloaded directly, this method serves to convert them to
+ * downloadable ones.
+ * url.
+ * @param clipUrl data url.
+ * @param q the quality you wish to convert.
+ * @returns {*} real video url.
+ */
 function getRealVideoURL(clipUrl, q) {
     switch (q) {
         case quality.sd:
@@ -95,6 +127,12 @@ function getRealVideoURL(clipUrl, q) {
     return clipUrl;
 }
 
+/**
+ * Get all video urls in a trailer page.
+ * @param page trailer page json data.
+ * @param q video quality, if undefined, video all qualities will be returned.
+ * @returns {Array} downloadable video urls.
+ */
 function getVideoUrl(page, q) {
     let allVideoUrls = [];
     let clips = page.clips;
