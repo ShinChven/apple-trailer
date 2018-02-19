@@ -9,10 +9,8 @@
   },
   "scripts": {
     "test": "node test/test.js",
-    "scripts":{
-      "postinstall":"npm run build",
-      "build":"rm -rf dist && gulp"
-    }
+    "postinstall": "npm run build",
+    "build": "rm -rf dist && gulp"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
