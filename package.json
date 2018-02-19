@@ -1,15 +1,23 @@
 {
   "name": "apple-trailer",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "author": "ShinChven Zhang",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.5.1",
-    "superagent": "^3.6.3",
-    "url-exists": "^1.0.3"
+    "superagent": "^3.6.3"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "scripts":{
+      "postinstall":"npm run build",
+      "build":"rm -rf dist && gulp"
+    }
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1"
   }
 }

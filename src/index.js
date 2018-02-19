@@ -15,7 +15,7 @@ function getPageData(url) {
     }
     if (url.indexOf('https://') === 0) { // resolve data from https url.
         // load https page html.
-        let dataRequest = http
+        return http
             .get(url)
             .then(function (resp) {
                 // find movie id from html tag.
@@ -27,20 +27,8 @@ function getPageData(url) {
                 // make up json url with movie id.
                 let dataURL = 'https://trailers.apple.com/trailers/feeds/data/' + id + '.json';
                 // get json data.
-                return http.get(dataURL);
+                return http.get(dataURL).then(readJSON);
             })
-            .catch(function (err) {
-                return new Promise(function (resolve, reject) {
-                    reject(err);
-                });
-            });
-        return dataRequest.then(readJSON)
-            .catch(function (err) {
-                // console.error(err);
-                return new Promise(function (resolve, reject) {
-                    reject(err);
-                });
-            });
     } else { // resolve data from http url.
         // make up json url from http page url.
         let dataURL = url + '/data/page.json';
@@ -108,8 +96,8 @@ function getRealVideoURL(clipUrl, q) {
 }
 
 function getVideoUrl(page, q) {
-    var allVideoUrls = [];
-    var clips = page.clips;
+    let allVideoUrls = [];
+    let clips = page.clips;
     clips.forEach(function (clip) {
         if (q) {
             try {
@@ -137,10 +125,10 @@ function getVideoUrl(page, q) {
 }
 
 module.exports = {
-    getPageData:getPageData,
-    getMostPop:getMostPop,
-    getOpening:getOpening,
-    getJustAdded:getJustAdded,
+    getPageData: getPageData,
+    getMostPop: getMostPop,
+    getOpening: getOpening,
+    getJustAdded: getJustAdded,
     getVideoUrl: getVideoUrl,
     getRealVideoURL: getRealVideoURL,
     quality: quality
