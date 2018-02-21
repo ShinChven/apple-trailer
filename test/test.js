@@ -10,7 +10,7 @@ function main() {
     console.log(url);
     console.log('');
 
-    appleTrailer.feeds
+    appleTrailer
         .getPageData(url)
         .then(function (data) {
             let title = data.page.movie_title;
