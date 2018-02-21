@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 /**
  * resolve Apple Trailer page data.
  * @param url apple trailer page url, http and https are both supported.
- * @returns {Promise<any>} a promise to return data.
+ * @returns {Promise<any>} a promise to return trailer page data.
  */
 function getPageData(url) {
     // check if there is a url
@@ -105,9 +105,8 @@ const qualityName = {
 };
 
 /**
- * Video urls in Apple Trailer's json data can not be downloaded directly, this method serves to convert them to
+ * Video urls in Apple Trailer's json data can not be downloaded directly, this function serves to convert them to
  * downloadable ones.
- * url.
  * @param clipUrl data url.
  * @param q the quality you wish to convert.
  * @returns {*} real video url.
