@@ -1,7 +1,6 @@
 const appleTrailer = require('../src/index');
 
 /**
- * command line usage:
  * node test/test.js http://trailers.apple.com/trailers/magnolia/please-stand-by/
  */
 function main() {

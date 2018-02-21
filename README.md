@@ -1,10 +1,8 @@
 # apple-trailer
+Apple Trailer site provides high quality trailer video, however it's not easy for you to download them. <p>
+This library helps you find the HD trailer video urls.
 
-Help me find apple trailers.
+# usage
+[sample code](/test/test.js)
 
-# todos
-- [x] find all videos;
-- [ ] subscribe rss;
-- [ ] web ui;
-- [ ] database;
 
