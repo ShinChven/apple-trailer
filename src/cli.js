@@ -6,7 +6,7 @@ const appleTrailer = require('../src/index');
  */
 function main() {
     // set trailer page url and video quality.
-    let url = process.argv[2] || 'http://trailers.apple.com/trailers/magnolia/please-stand-by/';
+    let url = process.argv[2];
     if(!url){
         console.warn('please provide url as: apple-trailer <url>')
         return;
