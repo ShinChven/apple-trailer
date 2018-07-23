@@ -1,4 +1,5 @@
-const appleTrailer = require('./index');
+#!/usr/bin/env node
+const appleTrailer = require('../src/index');
 
 /**
  * node test/test.js http://trailers.apple.com/trailers/magnolia/please-stand-by/
@@ -6,6 +7,10 @@ const appleTrailer = require('./index');
 function main() {
     // set trailer page url and video quality.
     let url = process.argv[2] || 'http://trailers.apple.com/trailers/magnolia/please-stand-by/';
+    if(!url){
+        console.warn('please provide url as: apple-trailer <url>')
+        return;
+    }
     let quality =  process.argv[3];
     console.log('home:');
     console.log(url);
