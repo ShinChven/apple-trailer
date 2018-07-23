@@ -8,7 +8,7 @@ This library helps you find the HD trailer video urls.
 $ npm link
 ```
 
-## cli quick usage
+## cli quick use
 
 ```bash
 $ apple-trailler <url>
