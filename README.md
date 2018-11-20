@@ -11,7 +11,7 @@ $ npm link
 ## cli quick use
 
 ```bash
-$ apple-trailler <url>
+$ apple-trailer <url>
 ```
 
 ## functions
